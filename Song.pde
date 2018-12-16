@@ -1,6 +1,8 @@
 class Song {
   float x, y;
   color [] cols = {#093663, #074081, #0868AC, #2A8CBD, #4EB3D3, #7CCCC3, #A8DDB5, #CCEAC5, #DFF3DB, #F7FCF0, #F7FCF0};
+  //color [] cols = {#EBDBCE, #D29F8B, #DBC6AB, #9E786C, #C5A9A6, #C5A9A6, #EBDBCE, #D29F8B, #DBC6AB, #9E786C,#C5A9A6};
+  
   color currentColor, baseColor, highlightColor;
   float diameter;
   boolean overCircle;
@@ -21,10 +23,10 @@ class Song {
     overCircle = false;
   }
   
-  Song(float _x, float _y, float _diameter, int _genre){
+  Song(float _x, float _y, float _diameter){
     x = _x;
     y = _y;
-    currentColor = color(255,0,0);
+    currentColor = color(255);
     diameter = _diameter;
   }
   
@@ -44,6 +46,7 @@ class Song {
   void update() {
     if (overCircle(x, y, diameter)) {
       currentColor = highlightColor;
+      diameter = 8;
       
       //display artist and title on the bottom
       rectMode(CENTER);
@@ -56,12 +59,13 @@ class Song {
       
     } else {
       currentColor = baseColor;
+      diameter = 5;
     }
   }
   
   void display(){
     noStroke();
     fill(currentColor);
-    ellipse(x, y, 5, 5);
+    ellipse(x, y, diameter, diameter);
   }
 }
