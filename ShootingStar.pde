@@ -32,7 +32,8 @@ class ShootingStar {
      outY = inout[3];
      
      for (int i = 0; i < xpos.length; i++) {
-       angle = map(i, 0, xpos.length, startangle, startangle + PI * 1/3);
+       //angle = map(i, 0, xpos.length, startangle, startangle + PI * 1/3);
+       angle = map(i, 0, xpos.length, startangle, startangle + PI);
        xpos[i] = middleX + cos(angle) * radius;
        ypos[i] = middleY + sin(angle) * radius;
      }
@@ -41,7 +42,7 @@ class ShootingStar {
   void display(){
     
     for (int i = 0; i <xpos.length; i++){
-      float starSize = map(i, 0, xpos.length, 3, 0);
+      float starSize = map(i, 0, xpos.length, 4, 0);
       noStroke();
       fill(255, 80);
       ellipse(xpos[i], ypos[i], starSize, starSize);
